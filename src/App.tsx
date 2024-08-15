@@ -1,7 +1,7 @@
 import { Refine } from "@refinedev/core";
 import { DevtoolsPanel, DevtoolsProvider } from "@refinedev/devtools";
 import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
-import { useNotificationProvider } from "@refinedev/antd";
+import {  useNotificationProvider } from "@refinedev/antd";
 import "@refinedev/antd/dist/reset.css";
 import { liveProvider, dataProvider, authProvider } from "./providers";
 import routerBindings, {
@@ -16,6 +16,8 @@ import Layout from "./components/layout";
 import { Authenticated } from "@refinedev/core";
 import { Resources } from "./config/resources";
 import { Companies } from "./pages/company/list";
+import { EditCompany } from "./pages/company/edit";
+
 import Create from "./pages/company/create";
 
 function App() {
@@ -61,6 +63,7 @@ function App() {
                   <Route path="/companies">
                     <Route index element={<Companies />} />
                     <Route path="new" element={<Create />} />
+                    <Route path="edit/:id" element={<EditCompany/>} />
              
                   </Route>
                 </Route>
