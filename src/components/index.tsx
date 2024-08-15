@@ -7,6 +7,7 @@ import LatesetActivitesSkeleton from "../components/skeleton/latest-activities";
 import ProjectCardSkeleton from "../components/skeleton/project-card";
 import TotalCountCard from "./home/total-count-card";
 import LatestActivites from "./home/latest-activties";
+import SelectedOptionWithAvatar from "./selected-option-avatar";
 export {
   UpcomingEvents,
   DealsDashboard,
@@ -17,4 +18,5 @@ export {
   ProjectCardSkeleton,
   TotalCountCard,
   LatestActivites,
+  SelectedOptionWithAvatar,
 };

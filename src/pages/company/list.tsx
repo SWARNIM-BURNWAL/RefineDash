@@ -13,7 +13,7 @@ import CustomAvator from "@/components/custom-avatar";
 
 type Company = GetFieldsFromList<CompaniesListQuery>;
 
-export const Companies = () => {
+export const Companies = ({ children }: React.PropsWithChildren) => {
   const go = useGo();
   const { tableProps, filters } = useTable({
     resource: "companies",
@@ -46,76 +46,78 @@ export const Companies = () => {
     },
   });
   return (
-    <List
-      breadcrumb={false}
-      headerButtons={() => {
-        return (
-          <CreateButton
-            onClick={() => {
-            
-              go({
-                to: {
-                  resource: "companies",
-                  action: "create",
-                },
-                options: {
-                  keepQuery: true,
-                },
-                type: "replace",
-              });
-            }}
-          />
-        );
-      }}
-    >
-      <Table
-        {...tableProps}
-        pagination={{
-          ...tableProps.pagination,
+    <>
+      <List
+        breadcrumb={false}
+        headerButtons={() => {
+          return (
+            <CreateButton
+              onClick={() => {
+                go({
+                  to: {
+                    resource: "companies",
+                    action: "create",
+                  },
+                  options: {
+                    keepQuery: true,
+                  },
+                  type: "replace",
+                });
+              }}
+            />
+          );
         }}
       >
-        <Table.Column<Company>
-          dataIndex="name"
-          title="Comapny Tittle"
-          defaultFilteredValue={getDefaultFilter("id", filters)}
-          filterIcon={<SearchOutlined />}
-          filterDropdown={(props) => (
-            <FilterDropdown {...props}>
-              <Input placeholder="Search Company" />
-            </FilterDropdown>
-          )}
-          render={(_value, record) => (
-            <Space>
-              <CustomAvator
-                shape="square"
-                name={record.name}
-                src={record.avatarUrl}
-              />
-              <Text style={{ whiteSpace: "nowrap" }}>{record.name}</Text>
-            </Space>
-          )}
-        />
-        <Table.Column<Company>
-          dataIndex="totalRevenue"
-          title="Opens Deals Amount"
-          render={(value, company) => (
-            <Text>
-              {currencyNumber(company?.dealsAggregate?.[0].sum?.value || 0)}
-            </Text>
-          )}
-        />
-        <Table.Column<Company>
-          dataIndex="id"
-          title="Action"
-          fixed="right"
-          render={(value, record) => (
-            <Space>
-              <EditButton hideText recordItemId={value} />
-              <DeleteButton hideText recordItemId={value} />
-            </Space>
-          )}
-        />
-      </Table>
-    </List>
+        <Table
+          {...tableProps}
+          pagination={{
+            ...tableProps.pagination,
+          }}
+        >
+          <Table.Column<Company>
+            dataIndex="name"
+            title="Comapny Tittle"
+            defaultFilteredValue={getDefaultFilter("id", filters)}
+            filterIcon={<SearchOutlined />}
+            filterDropdown={(props) => (
+              <FilterDropdown {...props}>
+                <Input placeholder="Search Company" />
+              </FilterDropdown>
+            )}
+            render={(_value, record) => (
+              <Space>
+                <CustomAvator
+                  shape="square"
+                  name={record.name}
+                  src={record.avatarUrl}
+                />
+                <Text style={{ whiteSpace: "nowrap" }}>{record.name}</Text>
+              </Space>
+            )}
+          />
+          <Table.Column<Company>
+            dataIndex="totalRevenue"
+            title="Opens Deals Amount"
+            render={(value, company) => (
+              <Text>
+                {currencyNumber(company?.dealsAggregate?.[0].sum?.value || 0)}
+              </Text>
+            )}
+          />
+          <Table.Column<Company>
+            dataIndex="id"
+            title="Action"
+            fixed="right"
+            render={(value, record) => (
+              <Space>
+                <EditButton hideText recordItemId={value} />
+                <DeleteButton hideText recordItemId={value} />
+              </Space>
+            )}
+          />
+        </Table>
+      </List>
+      {children}
+    </>
   );
 };
