@@ -15,6 +15,8 @@ import { Home, Login, Register, ForgotPassword } from "./pages";
 import Layout from "./components/layout";
 import { Authenticated } from "@refinedev/core";
 import { Resources } from "./config/resources";
+import { Companies } from "./pages/company/list";
+import Create from "./pages/company/create";
 
 function App() {
   return (
@@ -23,7 +25,6 @@ function App() {
         <AntdApp>
           <DevtoolsProvider>
             <Refine
-            
               dataProvider={dataProvider}
               liveProvider={liveProvider}
               notificationProvider={useNotificationProvider}
@@ -57,6 +58,11 @@ function App() {
                   }
                 >
                   <Route index element={<Home />} />
+                  <Route path="/companies">
+                    <Route index element={<Companies />} />
+                    <Route path="new" element={<Create />} />
+             
+                  </Route>
                 </Route>
               </Routes>
               <RefineKbar />

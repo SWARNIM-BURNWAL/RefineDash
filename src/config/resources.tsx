@@ -16,7 +16,7 @@ export const Resources: IResourceItem[] = [
   },
 
   {
-    name: "Comapany",
+    name: "companies",
     list: "/companies",
     show: "/companies/:id",
     create: "/companies/new",

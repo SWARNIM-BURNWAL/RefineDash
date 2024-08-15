@@ -6,6 +6,7 @@ import KanbanSkeleton from "../components/skeleton/kanban";
 import LatesetActivitesSkeleton from "../components/skeleton/latest-activities";
 import ProjectCardSkeleton from "../components/skeleton/project-card";
 import TotalCountCard from "./home/total-count-card";
+import LatestActivites from "./home/latest-activties";
 export {
   UpcomingEvents,
   DealsDashboard,
@@ -14,5 +15,6 @@ export {
   KanbanSkeleton,
   LatesetActivitesSkeleton,
   ProjectCardSkeleton,
-    TotalCountCard
+  TotalCountCard,
+  LatestActivites,
 };
