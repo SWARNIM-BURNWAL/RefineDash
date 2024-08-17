@@ -8,6 +8,9 @@ import ProjectCardSkeleton from "../components/skeleton/project-card";
 import TotalCountCard from "./home/total-count-card";
 import LatestActivites from "./home/latest-activties";
 import SelectedOptionWithAvatar from "./selected-option-avatar";
+import { KanbanBoard, KanbanBoardContainer } from "./tasks/kanban/board";
+import KanbanItem from "./tasks/kanban/item";
+import ProjectCard from "./tasks/kanban/cards";
 export {
   UpcomingEvents,
   DealsDashboard,
@@ -19,4 +22,8 @@ export {
   TotalCountCard,
   LatestActivites,
   SelectedOptionWithAvatar,
+  KanbanBoardContainer,
+  KanbanBoard,
+  KanbanItem,
+  ProjectCard,
 };
