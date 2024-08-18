@@ -10,7 +10,8 @@ import LatestActivites from "./home/latest-activties";
 import SelectedOptionWithAvatar from "./selected-option-avatar";
 import { KanbanBoard, KanbanBoardContainer } from "./tasks/kanban/board";
 import KanbanItem from "./tasks/kanban/item";
-import ProjectCard from "./tasks/kanban/cards";
+import { ProjectCardMemo } from "./tasks/kanban/cards";
+import { KanbanAddCardButton } from "./tasks/kanban/add-card-button";
 export {
   UpcomingEvents,
   DealsDashboard,
@@ -25,5 +26,6 @@ export {
   KanbanBoardContainer,
   KanbanBoard,
   KanbanItem,
-  ProjectCard,
+  ProjectCardMemo,
+  KanbanAddCardButton,
 };

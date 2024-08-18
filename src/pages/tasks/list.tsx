@@ -1,5 +1,10 @@
-import { KanbanBoard, KanbanBoardContainer, KanbanItem, ProjectCard } from "@/components";
-import { ProjectCardMemo } from "@/components/tasks/kanban/cards";
+import {
+  KanbanAddCardButton,
+  KanbanBoard,
+  KanbanBoardContainer,
+  KanbanItem,
+  ProjectCardMemo,
+} from "@/components";
 import KanbanColumn from "@/components/tasks/kanban/column";
 import { TASKS_QUERY, TASK_STAGES_QUERY } from "@/graphql/queries";
 import { TaskStage } from "@/graphql/schema.types";
@@ -71,6 +76,12 @@ export const Tasks = () => {
     };
   }, [stages, tasks]);
 
+  const isLoading = isLoadingStages || isLoadingTasks;
+
+  if(isLoading){
+    return <PageSkeleton />;
+  }
+
   const handleAddTask = (args: { stageId: string }) => {};
   return (
     <>
@@ -88,10 +99,29 @@ export const Tasks = () => {
                 id={task.id}
                 data={{ ...tasks, stageId: "unassinged" }}
               >
-                <ProjectCardMemo {...task} dueDate={task.dueDate||undefined} />
+                <ProjectCardMemo
+                  {...task}
+                  dueDate={task.dueDate || undefined}
+                />
               </KanbanItem>
             ))}
+
+            {taskStages.unassigned.length && (
+              <KanbanAddCardButton
+                onClick={() => handleAddTask({ stageId: "unassigned" })}
+              />
+            )}
           </KanbanColumn>
+
+          {taskStages.columns?.map((coloum) => (
+            <KanbanColumn
+              key={coloum.id}
+              id={coloum.id}
+              title={coloum.title}
+              count={coloum.tasks.length}
+              onAddClick={() => handleAddTask({ stageId: coloum.id })}
+            />
+          ))}
         </KanbanBoard>
       </KanbanBoardContainer>
     </>
