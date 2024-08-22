@@ -18,7 +18,7 @@ const KanbanColumn = ({
   id,
   title,
   description,
-  count,
+  count, 
   data,
 }: React.PropsWithChildren<Props>) => {
   const { isOver, setNodeRef, active } = useDroppable({

@@ -12,6 +12,8 @@ import { KanbanBoard, KanbanBoardContainer } from "./tasks/kanban/board";
 import KanbanItem from "./tasks/kanban/item";
 import { ProjectCardMemo } from "./tasks/kanban/cards";
 import { KanbanAddCardButton } from "./tasks/kanban/add-card-button";
+import { Accordion } from "./accordion";
+import { Text } from "./text";
 export {
   UpcomingEvents,
   DealsDashboard,
@@ -28,4 +30,13 @@ export {
   KanbanItem,
   ProjectCardMemo,
   KanbanAddCardButton,
+  Accordion,
+  Text,
 };
+export * from "./tasks/form/user-tag";
+export * from "./tasks/form/description";
+export * from "./tasks/form/due-date";
+export * from "./tasks/form/stage";
+export * from "./tasks/form/users";
+export * from "./tasks/form/title";
+export * from "./tasks/form/header";

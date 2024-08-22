@@ -16,6 +16,7 @@ import { MenuProps } from "antd/lib";
 import dayjs from "dayjs";
 import { getDateColor } from "@/utilities";
 import CustomAvator from "@/components/custom-avatar";
+import { useDelete, useNavigation } from "@refinedev/core";
 
 interface ProjectCardProps {
   id: string;
@@ -33,27 +34,33 @@ interface ProjectCardProps {
 
 const ProjectCard = ({ id, title, dueDate, users }: ProjectCardProps) => {
   const { token } = theme.useToken();
-  const edit = () => {};
-  const delete_card = () => {};
+  const { edit } = useNavigation();
+  const { mutate } = useDelete();
   const dropdownitems = useMemo(() => {
     const dropdownitems: MenuProps["items"] = [
       {
         key: "1",
         label: "View Card",
         icon: <EyeOutlined />,
+        onClick: () => {
+          edit("tasks", id, "replace");
+        },
       },
-      {
-        key: "2",
-        label: "Edit",
-        icon: <EditOutlined />,
-        onClick: edit,
-      },
+
       {
         danger: true,
-        key: "3",
+        key: "2",
         label: "Delete",
         icon: <DeleteOutlined />,
-        onClick: delete_card,
+        onClick: () => {
+          mutate({
+            resource: "tasks",
+            id,
+            meta: {
+              operation: "task",
+            },
+          });
+        },
       },
     ];
     return dropdownitems;
@@ -176,7 +183,7 @@ export const ProjectCardMemo = React.memo(
       prevProps.title === nextProps.title &&
       prevProps.updatatedAt === nextProps.updatatedAt &&
       prevProps.dueDate === nextProps.dueDate &&
-      prevProps.users === nextProps.users?.length&&
+      prevProps.users === nextProps.users?.length &&
       prevProps.updatatedAt === nextProps.updatatedAt
     );
   }
