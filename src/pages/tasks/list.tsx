@@ -10,15 +10,14 @@ import KanbanColumnSkeleton from "@/components/skeleton/kanban";
 import KanbanColumn from "@/components/tasks/kanban/column";
 import { UPDATE_TASK_STAGE_MUTATION } from "@/graphql/mutations";
 import { TASKS_QUERY, TASK_STAGES_QUERY } from "@/graphql/queries";
-import { TaskStage } from "@/graphql/schema.types";
-import { TasksQuery } from "@/graphql/types";
+import { TaskStagesQuery, TasksQuery } from "@/graphql/types";
 import { DragEndEvent } from "@dnd-kit/core";
 import {   type HttpError,useList, useNavigation, useUpdate } from "@refinedev/core";
 import { GetFieldsFromList } from "@refinedev/nestjs-query";
 import React, { useMemo } from "react";
 import type { TaskUpdateInput } from "@/graphql/schema.types";
 type Task = GetFieldsFromList<TasksQuery>;
-
+type TaskStage = GetFieldsFromList<TaskStagesQuery> & { tasks: Task[] };
 export const Tasks = ({ children }: React.PropsWithChildren) => {
   const { replace } = useNavigation();
   const { data: stages, isLoading: isLoadingStages } = useList<TaskStage>({

@@ -32,7 +32,7 @@ export type TotalCountType = "companies" | "contacts" | "deals";
 
 export const totalCountVariants: {
   [key in TotalCountType]: {
-    primaryColor: string;
+    primaryColor?: string;
     secondaryColor?: string;
     icon: React.ReactNode;
     title: string;

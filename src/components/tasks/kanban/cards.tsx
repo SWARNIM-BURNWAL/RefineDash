@@ -18,19 +18,17 @@ import { getDateColor } from "@/utilities";
 import CustomAvator from "@/components/custom-avatar";
 import { useDelete, useNavigation } from "@refinedev/core";
 
-interface ProjectCardProps {
+type ProjectCardProps = {
   id: string;
   title: string;
-  updatatedAt: string;
+  updatedAt: string;
   dueDate?: string;
-  users?: [
-    {
-      id: string;
-      name: string;
-      avatarUrl?: User["avatarUrl"];
-    },
-  ];
-}
+  users?: {
+    id: string;
+    name: string;
+    avatarUrl?: User["avatarUrl"];
+  }[];
+};
 
 const ProjectCard = ({ id, title, dueDate, users }: ProjectCardProps) => {
   const { token } = theme.useToken();
@@ -187,10 +185,10 @@ export const ProjectCardMemo = React.memo(
     return (
       prevProps.id === nextProps.id &&
       prevProps.title === nextProps.title &&
-      prevProps.updatatedAt === nextProps.updatatedAt &&
+      prevProps.updatedAt === nextProps.updatedAt &&
       prevProps.dueDate === nextProps.dueDate &&
       prevProps.users === nextProps.users?.length &&
-      prevProps.updatatedAt === nextProps.updatatedAt
+      prevProps.updatedAt === nextProps.updatedAt
     );
   }
 );

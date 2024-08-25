@@ -16,10 +16,8 @@ const TotalCountCard = ({ resource, isLoading, totalCount }: Props) => {
     style: {
       height: "48px",
       width: "100%",
-     
-    
+
       fill: primaryColor,
-      
     },
 
     padding: 0,
@@ -30,16 +28,22 @@ const TotalCountCard = ({ resource, isLoading, totalCount }: Props) => {
 
     xField: "index",
     yField: "value",
-    label: false,
-
+    label: {
+      style: {
+        fill: "transparent",
+      },
+    },
+    line: {
+      color: primaryColor,
+    },
     shapeField: "smooth",
     axis: false,
-    area:{
-      style:{
-        fill:`l(270) 0:${primaryColor} 1:${secondaryColor}`,
-      
-      }
-    }
+    area: {
+      style: {
+        fill: `l(270) 0:${primaryColor} 1:${secondaryColor}`,
+        
+      },
+    },
   };
 
   return (
