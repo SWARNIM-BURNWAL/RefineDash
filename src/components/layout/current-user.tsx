@@ -16,6 +16,7 @@ const CurrentUser = () => {
       style={{
         display: "flex",
         flexDirection: "column",
+        
       }}
     >
       <Text strong style={{ padding: "12px 20px" }}>

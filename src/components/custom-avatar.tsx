@@ -12,7 +12,7 @@ const CustomAvator = ({name, style ,...rest}:Props) => {
   return (
     <AntdAvatar
     alt={name}
-    size={"small"}
+    size={"large"}
     style={{
       backgroundColor:"#f56a00",
       display:"flex",
